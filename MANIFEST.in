@@ -1,0 +1,2 @@
+recursive-include jingtrang *.jar
+recursive-include tests *.rnc *.py
