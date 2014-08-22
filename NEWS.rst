@@ -6,7 +6,6 @@ News
 
 - initial version
 - includes py.test and tox test suite
-- jar files for jing2009
 - included jar files for:
   1. Jing version 20091111
   2. Trang version 20091111

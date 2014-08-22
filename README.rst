@@ -1,19 +1,19 @@
-=========
-jingtrang
-=========
+=====================================================================
+jingtrang (compact and XML) RELAX NG schema validator and transformer
+=====================================================================
 
-`jingtrang` is wrapper of Java based command line tools for working with RELAX NG schemas for XML documents.
+`jingtrang` is wrapper of Java based command line tools for working with RELAX NG schemas.
 
 Motivation
 ==========
 
 RELAX NG and especially compact form of describing XML structures is very efficient.
 
-Unfortunalely, with Python, support is rather limited:
+Unfortunately, with Python, support is rather limited:
 
 - lxml allows validation of XML based schemas only
 - lxml is based on libxml2 library, which has some minor limitations with regards to RELAX NG validation (in some cases you find error messages like "TODO").
-- package rnc2rng is promissing conversion from XML to compact form, but is not really usable (it simply does not work).
+- package rnc2rng is promising conversion from XML to compact form, but is not really usable (it simply does not work).
 
 In general, it is even not very easy finding command line validator for compact RELAX NG syntax.
 
@@ -27,7 +27,18 @@ Problem with this tool is, that it takes few steps more then is really convenien
 
 As our team is working on Linux as well as on MS Windows, I was looking for cross platform command line solution.
 
-As jingtrang commands (jing and trang) seem to be functioning well, I have decided to write this jing and trang wrapper.
+As jingtrang commands (jing and trang) seem to be functioning very well, I have decided to write this jing and trang wrapper.
+
+Delivering (py)jing and (py)trang command line tool
+===================================================
+
+Original command line tools are named jing (validator) and trang (transforming schemas).
+
+To prevent naming conflict, prefix `py` is used.
+
+Command line interface is exactly the same, as if using it with java interpreter, only introductory "java -jar <jarfile.jar>" part is not necessary to call.
+
+Here are described only most popular use cases, for more options, consult original jingtrang documentation (download from googlecode or elsewhere and see included html doc).
 
 Installation
 ============
@@ -42,28 +53,18 @@ Install it by::
 
     $ pip install jingtrang
 
-After that, two new commands are installed:
+After that, two new scripts are installed:
 
-- jing - RELAX NG validator
-- trang - utility for transforming between XML/compact syntax/XSD/few more formats
+- pyjing - RELAX NG validator
+- pytrang - utility for transforming between XML/compact syntax/XSD/few more formats
 
-.. note:: There is no need to install `jing.jar` and `trang.jar` files, these are included in `jintrang` Python package.
+.. note:: There is no need to install `jing.jar` and `trang.jar` files as they are already included in `jintrang` Python package.
 
-Delivering (py)jing and (py)trang command line tool
-===================================================
-
-original command line tools are named jing (validator) and trang (transforming schemas).
-
-To prevent naming conflict, prefix `py` is used.
-
-Command line interface is exactly the same, as if using it from, only introductory "java -jar <jarfile.jar>" part is not necessary to call.
-
-Here are described only most popular use cases, for more options, consult original jingtrang documentation (download from googlecode or elsewhere and see included html doc).
 
 pyjing - RELAX NG validator (XML as well as compact syntax)
 -----------------------------------------------------------
 
-`pyjing` serves for validating XML documents agains XML as well as compact syntax RELAX NG schemas:
+`pyjing` serves for validating XML documents against XML as well as compact syntax RELAX NG schemas:
 
     $ pyjing
     Jing version 20091111
@@ -77,7 +78,7 @@ To validate XML using XML syntax RELAX NG schema::
 
 To validate using compact syntax schema, use `-c` switch::
 
-    $ pyjing schema.rnc file.xml
+    $ pyjing -c schema.rnc file.xml
 
 Validation of multiple XML files at once is possible::
 
@@ -87,7 +88,7 @@ pytrang - Schema format convertor
 ---------------------------------
 
 `pytrang` is "schema language translator" supporting not only RELAX NG XML and
-compact syntax, but also DTD, XSD and even allows generating initial schema
+compact syntax, but also DTD, XSD. It even allows generating initial schema
 based on sample XML document.
 
 Try to run it::
@@ -97,12 +98,14 @@ Try to run it::
     Trang version 20091111
     usage: java com.thaiopensource.relaxng.translate.Driver [-C catalogFileOrUri] [-I rng|rnc|dtd|xml] [-O rng|rnc|dtd|xsd] [-i input-param] [-o output-param] inputFileOrUri ... outputFile
 
-`pytrang` is able autodecting format from file extension, so you can directly convert e.g. compact syntax to XML one by::
+`pytrang` is able auto-detect format from file extension, so you can mostly directly convert without specifying explicitly, what input and output formats are to be used.
+
+Converting compact syntax to XML one can be done by::
 
     $ pytrang root.rnc root.rng
 
 .. note:: If you use `include` in your schema, all included schemas will be converted too.
 
-To generate initial RELAX NG schema in compact format for sample XML you have::
+To generate initial RELAX NG schema in compact format from sample XML file, try::
 
     $ pytrang sample.xml initial.rnc
