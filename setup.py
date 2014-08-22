@@ -13,5 +13,6 @@ setup(
             "pytrang=jingtrang:trang"
         ]
     },
-    zip_safe=False
+    zip_safe=False,
+    package_data={"jingtrang": ["*.jar"]}
 )
