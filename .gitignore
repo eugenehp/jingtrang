@@ -1,5 +1,8 @@
+*.egg
+*.egg-info
 *.pyc
 .ropeproject
 .tox
+AUTHORS
+ChangeLog
 dist
-*.egg-info
