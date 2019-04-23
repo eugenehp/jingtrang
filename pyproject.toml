@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "jingtrang"
+version = "0.1.2"
+description = "Wrapping jing and trang RELAX NG tools into Python script"
+authors = ["Jan Vlcinsky <jan.vlcinsky@tamtamresearch.com>"]
+homepage = "http://bitbucket.org/tamtamresearch/jingtrang"
+repository = "http://bitbucket.org/tamtamresearch/jingtrang"
+readme = "README.rst"
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Java",
+    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3.4",
+    "Programming Language :: Python :: 3.5",
+    "Programming Language :: Python :: 3.6",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Utilities",
+]
+[tool.poetry.scripts]
+pyjing = "jingtrang:jing"
+pytrang = "jingtrang:trang"
+
+[tool.poetry.dependencies]
+python = "~2.7 || ^3.4"
+
+[tool.poetry.dev-dependencies]
+pytest = "^4.4"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

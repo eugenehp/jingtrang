@@ -1,13 +1,12 @@
 import subprocess
-import pytest
+
 import py
+import pytest
 
 
 @pytest.fixture(
-    params=[
-        "tests/dataset-rdstmc",
-        "tests/dataset-wiki",
-        "tests/dataset-rntutor"])
+    params=["tests/dataset-rdstmc", "tests/dataset-wiki", "tests/dataset-rntutor"]
+)
 def datasetdir(request):
     return py.path.local(request.param)
 

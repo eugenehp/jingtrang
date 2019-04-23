@@ -3,6 +3,9 @@
 *.pyc
 .ropeproject
 .tox
+.venv
 AUTHORS
 ChangeLog
 dist
+pip-wheel-metadata
+poetry.lock

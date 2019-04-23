@@ -45,7 +45,7 @@ Installation
 
 Prerequisites are:
 
-- Python 2.7
+- Python (2.7 or 3.4 and higher)
 - Java
 - pip
 
